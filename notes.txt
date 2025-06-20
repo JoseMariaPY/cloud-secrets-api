@@ -1,0 +1,4 @@
+
+serverless package: empaqueta
+
+$ serverless invoke local --function hello: llamar a una funcion localmente
