@@ -4,6 +4,7 @@ from botocore.exceptions import ClientError
 
 ssm = boto3.client("ssm")
 
+
 def handler(event, context):
     try:
         body = json.loads(event.get("body", "{}"))

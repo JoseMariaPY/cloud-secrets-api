@@ -3,6 +3,7 @@ import boto3
 
 ssm = boto3.client("ssm")
 
+
 def handler(event, context):
     headers = event.get("headers", {})
     path_prefix = headers.get("x-parameter-path", "/")

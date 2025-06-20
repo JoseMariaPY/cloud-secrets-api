@@ -15,7 +15,6 @@ provider:
         - ssm:DeleteParameter
         - ssm:GetParametersByPath
       Resource: "*"
-
   apiGateway:
     apiKeys:
       - ParameterApiKey  # Nombre de la API Key

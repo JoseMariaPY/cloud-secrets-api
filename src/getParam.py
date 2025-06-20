@@ -2,6 +2,7 @@ import json
 import boto3
 ssm = boto3.client('ssm')
 
+
 def handler(event, context):
     headers = event.get("headers", {})
     param_name = headers.get("x-parameter-name")

@@ -5,7 +5,6 @@ A Serverless API built with AWS Lambda and API Gateway to **create, read, update
 > ☁️ This is a hands-on project to practice AWS Serverless skills as a developer.
 
 ---
-
 ## 🚀 Tech Stack
 
 - AWS Lambda (Python 3.13)
