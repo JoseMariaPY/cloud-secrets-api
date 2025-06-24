@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: Cloud Secrets API
+  description: Serverless API to manage secrets using AWS SSM Parameter Store.
+  version: 1.0.0
+
+servers:
+  - url: https://{api_id}.execute-api.us-east-1.amazonaws.com/dev
+    variables:
+      api_id:
+        default: your-api-id
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+  schemas:
+    ParameterRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: /myapp/github
+        value:
+          type: string
+          example: my-secret
+        type:
+          type: string
+          default: SecureString
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /parameters:
+    post:
+      summary: Create a parameter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParameterRequest'
+      responses:
+        '201':
+          description: Parameter created
+        '409':
+          description: Already exists
+    patch:
+      summary: Update a parameter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParameterRequest'
+      responses:
+        '200':
+          description: Updated successfully
+        '404':
+          description: Not found
+    get:
+      summary: Get a parameter
+      parameters:
+        - name: x-parameter-name
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Not found
+    delete:
+      summary: Delete a parameter
+      parameters:
+        - name: x-parameter-name
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          description: Not found
+
+  /parameters/list:
+    get:
+      summary: List parameters by path
+      parameters:
+        - name: x-parameter-path
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of parameters

@@ -46,6 +46,19 @@ x-api-key: YOUR_API_KEY
 
 ## 📡 Available Endpoints
 
+### API Documentation (OpenAPI / Swagger)
+This project includes a full OpenAPI 3.0 specification (openapi.yaml) to describe all available endpoints.
+
+You can explore and test the API visually using Swagger Editor:
+
+🔗 Open in Swagger Editor
+
+1. Click the link above
+
+2. Paste or upload openapi.yaml
+
+3. Interact with the API in the browser!
+
 ### ✅ Create Parameter
 
 ```http
